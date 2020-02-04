@@ -80,7 +80,8 @@ function checkInputs(){
             break;
 
         case 1:
-            
+            placheolder.innerText=polybios(valorTexto);
+            console.log("no");
             break;
 
         case 2:
