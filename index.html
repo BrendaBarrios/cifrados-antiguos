@@ -5,8 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cifrados Antiguos</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/cesar.js"></script>
+    <script src="js/polybios.js"></script>
+    <script src="js/vigenere.js"></script>
+    <script src="js/hill.js"></script>
+    <script src="js/playfair.js"></script>
+    <script src="js/alberti.js"></script>
+    <script src="js/main.js"></script> <!--Enlazand archivo-->
 </head>
-<body>
-    <p>it works!!!</p>
+<body onload="main()">
+    <header class="seccion">
+        <h1>Algoritmos de Encriptación</h1>
+    </header>
+    <article class="seccion">
+        <div  id="controles">
+            <label>Tipo de algoritmo</label>
+            <select name="algoritmo" id="algoritmo">
+                <option value="cesar">Cesar</option>
+                <option value="polybios">Polybios</option>
+                <option value="alberti-clave">Alberti</option>
+                <option value="vigenere-clave">Vigénere</option>
+                <option value="vigenere2-clave">Vigénere 2</option>
+                <option value="playfair">Playfair</option>
+                <option value="hill-matriz">Hill</option>
+            </select>
+            
+            <label>Acción</label>
+            <select name="accion" id="accion">
+                <option value="cifrar">Cifrar</option>
+                <option value="descifrar">Descifrar</option>
+            </select>
+            <label id="label-clave">Clave</label></label>
+            <input id="input-clave" type="text" name="clave">
+        </div>
+       
+        <div id="principal">
+            <textarea id="editor" ></textarea>
+            <div id="resultado"></div>
+        </div>
+        
+    </article >
+    <footer class="seccion">
+        <p>&copy; 2020</p>
+    </footer>
 </body>
 </html>
