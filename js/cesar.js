@@ -1,3 +1,11 @@
+/**
+ * @description Algoritmo de Cesar para cifrar/decifrar.
+ * @param {String} texto Es la cadena de texto ingresada por el usuario.
+ * @param {String} accion Indica lla acción cifrar descifrar.
+ * @author Brenda Yasmin Barrios Becerra
+ * @returns {String} Resultado segun la acción indicada.
+ */
+
 function cesar(texto, accion){
     let mensajeCifrado="";
     let arreglo={

@@ -1,4 +1,10 @@
 
+/**
+ * @description Algoritmo polybios realiza la acción cifrar.
+ * @param {String} texto Es la cadena de texto ingresada por el usuario.
+ * @returns {String} Mensaje cifrado.
+ * @author Brenda Yasmin Barrios Becerra.
+ */
 function polybiosCifrar(texto){
     let conversor_texto_minusculas=texto.toLocaleLowerCase();
     let mensajecifrado=" ";
@@ -32,7 +38,12 @@ function polybiosCifrar(texto){
     return  mensajecifrado; 
     
 }
-
+/**
+ * @description Algoritmo polybios realiza la acción decifrar.
+ * @param {String} texto Es la cadena de texto ingresada por el usuario.
+ * @returns {String} Mensaje decifrado.
+ * @author Brenda Yasmin Barrios Becerra.
+ */
 function polybiosDescifrar(texto){
     let conversor_texto_minusculas=texto.toLocaleUpperCase();
     let mensajecifrado="";
