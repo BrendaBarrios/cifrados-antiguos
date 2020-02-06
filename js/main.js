@@ -17,6 +17,7 @@ let placheolder;
 function debounce(fuc,delay){
     let debounceTimer;
     return function(){
+        placheolder.innerHTML = '<img src="src/reloj.gif" alt="Procesando...">';
         const context=this;
         const args=arguments;
         clearTimeout(debounceTimer);
@@ -42,7 +43,7 @@ function main(){
     resultado.append(placheolder)
     let listener=debounce(function(e){
         checkInputs();
-    },1000);
+    },2000);
     algoritmo.addEventListener('change',listener,false);
     accion.addEventListener('change',listener,false);
     clave.addEventListener('input',listener,false);
@@ -50,7 +51,10 @@ function main(){
 }
 
 
-
+/**
+ * @description Lee los datos de todos los campos
+ * @author Brenda Yasmin Barrios Becerra
+ */
 function checkInputs(){
     console.log(editor);
     let valorTexto=editor.value

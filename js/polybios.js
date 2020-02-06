@@ -38,6 +38,7 @@ function polybiosCifrar(texto){
     return  mensajecifrado; 
     
 }
+
 /**
  * @description Algoritmo polybios realiza la acción decifrar.
  * @param {String} texto Es la cadena de texto ingresada por el usuario.
