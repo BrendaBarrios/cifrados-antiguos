@@ -52,7 +52,6 @@ function main(){
 
 
 function checkInputs(){
-    console.log(editor);
     let valorTexto=editor.value
     let tipoAlgoritmo=algoritmo.selectedIndex
     let cifrarDesifrar=accion.selectedIndex
@@ -87,7 +86,7 @@ function checkInputs(){
             break;
 
         case 2:
-            
+            placheolder.innerText= cifrarAlberti(valorTexto, ingresaClave, cifrarDesifrar);
             break;
         case 3:
             
