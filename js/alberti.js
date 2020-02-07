@@ -9,43 +9,66 @@
  */
 function cifrarAlberti(texto, clave, opcion) {
     if (clave.search(/[a-zA-Z]{2}/)) return 'La clave para cifrar debe tener solo dos letras.';
-    let claveAlgoritmo = clave.toLowerCase();
+    let a = clave.toUpperCase().charCodeAt(0) - 64;
+    let b = clave.toUpperCase().charCodeAt(1) - 64;
+    let mayus;
+    let minus;
     let textoCifrado = '';
-    let caracter1 = claveAlgoritmo.charCodeAt(0);
-    let caracter2 = claveAlgoritmo.charCodeAt(1);
-    let posicionesBarrido = caracter2 - caracter1;
-    if (opcion == 1) { // Es verdadero si se elige descrifrar
-        posicionesBarrido = caracter1 - caracter2;
+    if (opcion == 0) { // Es verdadero si se elige descrifrar
+        mayus = generarMapaMayusculas(a, b);
+        minus = generarMapaMinusculas(a, b);
+    } else {
+        mayus = generarMapaMayusculas(b, a);
+        minus = generarMapaMinusculas(b, a);
     }
     for (const letra of texto) {
-        textoCifrado += cambiarLetra(letra, posicionesBarrido);
+        if (letra == ' ') textoCifrado += ' ';
+        else {
+            if (letra.charCodeAt(0) > 96) {
+                textoCifrado += minus[letra];
+            }
+            else {
+                textoCifrado += mayus[letra];
+            }
+        }
     }
     return textoCifrado;
 }
 
 /**
- * @description Intercambia una letra por otra un numero de posiciones en un alfabeto circular.
- * @param {String} letra Una letra a intercambiar.
- * @param {Number} posiciones Numero de posiciones en el alfabeto circular.
- * @returns {String} Un String con la letra intercambiada.
+ * @description Genera un mapeo del alfabeto en mayusculas usando como incio de clave valor a y b.
+ * @param {Number} letra Primer letra de la clave.
+ * @param {Number} posiciones Segunda letra de la clave.
+ * @returns {Map} Un mapa con las letras cambiadas de acuerdo a la clave.
  * @author Luis Enrique Ortiz Ramirez.
  */
-function cambiarLetra(letra, posiciones) {
-    if (letra == ' ') return ' ';
-    let caracter = letra;
-    let posicionAlfabeto = caracter.toUpperCase().charCodeAt(0) - 64;
-    if (posiciones < 0) { // Se descrifra
-        if (posicionAlfabeto + posiciones < 0) { // Se suma y se vuelve a 26 apuntar un caracter mas alla de la a
-            return String.fromCharCode(caracter.charCodeAt(0) + posiciones + 26);
-        } else {
-            return String.fromCharCode(letra.charCodeAt(0) + posiciones);
-        }
-    } else { // Se cifra
-        if (posicionAlfabeto + posiciones > 26) { // Se suma y se resta 26 apuntar un caracter mas alla de la z
-            return String.fromCharCode(caracter.charCodeAt(0) + posiciones - 26);
-        } else { // Simplemente se suma
-            return String.fromCharCode(letra.charCodeAt(0) + posiciones);
-        }
+function generarMapaMayusculas(a, b) {
+    let mapa = new Map();
+    for (let i = 0; i < 26; i++) {
+        if (a > 26) a -= 26;
+        if (b > 26) b -= 26;
+        mapa[String.fromCharCode(64 + a)] = String.fromCharCode(64 + b);
+        a++;
+        b++;
     }
-    return caracter;
+    return mapa;
+}
+
+/**
+ * @description Genera un mapeo del alfabeto en minusculas usando como incio de clave valor a y b.
+ * @param {Number} letra Primer letra de la clave.
+ * @param {Number} posiciones Segunda letra de la clave.
+ * @returns {Map} Un mapa con las letras cambiadas de acuerdo a la clave.
+ * @author Luis Enrique Ortiz Ramirez.
+ */
+function generarMapaMinusculas(a, b) {
+    let mapa = new Map();
+    for (let i = 0; i < 26; i++) {
+        if (a > 26) a -= 26;
+        if (b > 26) b -= 26;
+        mapa[String.fromCharCode(96 + a)] = String.fromCharCode(96 + b);
+        a++;
+        b++;
+    }
+    return mapa;
 }
