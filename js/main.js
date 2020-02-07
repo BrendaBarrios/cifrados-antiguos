@@ -43,7 +43,7 @@ function main(){
     resultado.append(placheolder)
     let listener=debounce(function(e){
         checkInputs();
-    },2000);
+    },1000);
     algoritmo.addEventListener('change',listener,false);
     accion.addEventListener('change',listener,false);
     clave.addEventListener('input',listener,false);
@@ -101,9 +101,7 @@ function checkInputs(){
         case 5:
             
             break;
-        case 6:
-            
-            break;
+
         
         default:
             break;
