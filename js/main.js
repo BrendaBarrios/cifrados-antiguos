@@ -40,6 +40,7 @@ function main(){
     resultado=document.querySelector("#resultado");
     placheolder=document.createElement('p');
     placheolder.id='placeholder';
+    placheolder.innerText = '...';
     resultado.append(placheolder)
     let listener=debounce(function(e){
         checkInputs();
@@ -60,13 +61,10 @@ function checkInputs(){
     let tipoAlgoritmo=algoritmo.selectedIndex
     let cifrarDesifrar=accion.selectedIndex
     let ingresaClave=clave.value
-    placheolder.innerHTML= `Texto: ${valorTexto}<br>
-    Algoritmo: ${tipoAlgoritmo}<br>
-    Acción:${cifrarDesifrar}<br>
-    Clave: ${ingresaClave}<br>`;
+    placheolder.innerText= `...`;
 
 
-    if ([2,3,4,6].includes(tipoAlgoritmo)) {
+    if ([2,3,5].includes(tipoAlgoritmo)) {
         labelClave.style.visibility = 'visible';
         clave.style.visibility = 'visible';
         
@@ -96,10 +94,11 @@ function checkInputs(){
             placheolder.innerText = cifrarVigenere(valorTexto, ingresaClave, cifrarDesifrar);
             break;  
         case 4:
-            
+            if(accion.value=='cifrar') placheolder.innerText=playfairCifrar(valorTexto);
+            else placheolder.innerText=playfairDecifrar(valorTexto);
             break;
         case 5:
-            
+            //placheolder = cifrarHill(valorTexto, ingresaClave, cifrarDesifrar);
             break;
 
         
