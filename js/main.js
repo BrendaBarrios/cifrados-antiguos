@@ -90,10 +90,10 @@ function checkInputs(){
             break;
 
         case 2:
-            placheolder.innerText= cifrarAlberti(valorTexto, ingresaClave, cifrarDesifrar);
+            placheolder.innerText = cifrarAlberti(valorTexto, ingresaClave, cifrarDesifrar);
             break;
         case 3:
-            
+            placheolder.innerText = cifrarVigenere(valorTexto, ingresaClave, cifrarDesifrar);
             break;  
         case 4:
             
